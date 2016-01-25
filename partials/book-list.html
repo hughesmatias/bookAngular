@@ -1,0 +1,26 @@
+<div id="books" class="table-responsive">
+  <span id="books-counter">Cantidad de libros: {{books.length}}</span>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <td id="default-row">Book Title</td>
+        <td id="default-row">Book Author</td>
+        <td id="default-row">Book Description</td>
+        <td id="default-row">Book Pages Amount</td>
+        <td id="default-row" style="width:5%"></td>
+        <td id="default-row" style="width:5%"></td>
+      </tr>
+    </thead>
+    <tbody id="books-table">
+      <tr ng-repeat="book in books | filter:queryBook">
+        <td id="default-row">{{book.title}}</td>
+        <td id="default-row">{{book.author}}</td>
+        <td id="default-row">{{book.description}}</td>
+        <td id="default-row">{{book.pagesAmount}}</td>
+        <td id="default-row" style="width:5%"><a href="#/bookDetail/{{book.id}}">Editar</a></td>
+        <td id="default-row" style="width:5%"><a>Quitar</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <a class="btn btn-default" href="#/bookCreate" role="button">Create Book</a>
+</div>

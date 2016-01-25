@@ -1,0 +1,23 @@
+{
+  "name": "bookAngu",
+  "authors": [
+    "Matias Perez Hughes <hughesmatias@gmail.com>"
+  ],
+  "description": "lister books in webpage",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.9",
+    "bootstrap": "~3.3.6",
+    "angular-route": "~1.4.9"
+  }
+}

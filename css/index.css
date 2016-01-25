@@ -1,0 +1,19 @@
+#default-row{
+	font-style: bold;
+	font-family: "Times New Roman", Times, serif;
+	color:grey;
+	font-size: 16px
+}
+
+
+#scrollable-dropdown-menu .tt-dropdown-menu {
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+
+@media only screen and (max-width: 768px) {
+    body {
+        background-color:lightblue;
+    }
+}
