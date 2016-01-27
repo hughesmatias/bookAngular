@@ -1,0 +1,20 @@
+<div id="authors" class="wrapper table-responsive">
+  <span id="authors-counter"></span>
+  <table class="table table-hover" id="authors-table">
+    <thead>
+      <tr>
+        <td id="default-row" style="width:75%">Author Name</td>
+        <td id="default-row"></td>
+        <td id="default-row"></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="author in authors">
+        <td>{{author.name}}</td>
+        <td><a href="#/authors/{{author.id}}">Editar</a></td>
+        <td><a href="">Quitar</a></td>
+      </tbody>
+  </table>
+  <spam id="error-author"></spam>
+  <a class="btn btn-default" id="link-create-author" role="button" href="#/authors/new">Create Author</a>
+</div>

@@ -2,16 +2,21 @@
   <h1>Formulario Alta Libro</h1>
   <div id="crearLibro">
     <form id="form-book" ng-submit="submit()">
-      <input id="idBook" type="hidden" value="{{book.id}}">
-      <input id="title" name="title" type="text" class="form-control" placeholder="Titulo" value="{{book.title}}" required>
-      <div id="author-typeahead">
-        <input id="author" class="form-control typeahead" type="text" placeholder="Authors" value="{{book.author}}" required>
+      <input id="idBook" type="hidden" ng-model="id">
+      <input id="title" name="title" type="text" class="form-control" placeholder="Titulo" ng-model="title" required>
+      <div id="author">
+        <input id="author" class="form-control" type="text" placeholder="Authors" ng-model="author" required>
+      </div>
+      <div >
+        <select ng-controller="AuthorsListCtrl">
+          <option ng-repeat="author in authors" value="{{author.id}}">{{author.name}}</option>
+        </select>
       </div>
       <div id="description"><p>
         {{book.description}}
       </p></div>
-      <input id="pagesAmount" name="pagesAmount" type="text" class="form-control" placeholder="Cantidad de Paginas" value="{{book.pagesAmount}}" required>
-      <input type="submit" id="submit" value="Submit" />
+      <input id="pagesAmount" name="pagesAmount" type="text" class="form-control" placeholder="Cantidad de Paginas" ng-model="pagesAmount" required>
+      <input type="submit" id="submit" class="btn btn-primary" value="Submit" />
     </form>
   </div>
 </div>

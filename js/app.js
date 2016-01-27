@@ -8,16 +8,25 @@ var booksApp = angular.module("booksApp",[
 booksApp.config (['$routeProvider',
   function($routeProvider) {
     $routeProvider.
-    when("/booksList",{
-      templateUrl : "partials/book-list.html",
+    when("/books/list",{
+      templateUrl : "partials/books-list.html",
       controller: "BooksListCtrl"
     }).when("/bookDetail/:id",{
       templateUrl : "partials/book-detail.html",
       controller: "BookDetailCtrl"
-    }).when("/bookCreate",{
+    }).when("/books/new",{
       templateUrl : "partials/book-detail.html",
       controller : "BookCreateCtrl"
+    }).when("/authors/list",{
+      templateUrl : "partials/authors-list.html",
+      controller: "AuthorsListCtrl"
+    }).when("/authors/new",{
+      templateUrl : "partials/author-detail.html",
+      controller : "AuthorCreateCtrl"
+    }).when("/authors/:id",{
+      templateUrl : "partials/author-detail.html",
+      controller : "AuthorDetailCtrl"
     }).otherwise({
-      redirectTo: "/booksList"
+      redirectTo: "/books/list"
     });
   }]);
