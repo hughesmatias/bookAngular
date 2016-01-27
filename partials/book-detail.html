@@ -7,14 +7,10 @@
       <div id="author">
         <input id="author" class="form-control" type="text" placeholder="Authors" ng-model="author" required>
       </div>
-      <div >
-        <select ng-controller="AuthorsListCtrl">
-          <option ng-repeat="author in authors" value="{{author.id}}">{{author.name}}</option>
-        </select>
-      </div>
-      <div id="description"><p>
-        {{book.description}}
-      </p></div>
+      <select class="form-control" ng-model="authorSelected" ng-controller="AuthorsListCtrl">
+        <option ng-repeat="author in authors" value="{{author.id}}">{{author.name}}</option>
+      </select>
+      <textarea class="form-control" ng-model="description" rows="3" placeholder="Descripcion del libro"></textarea>
       <input id="pagesAmount" name="pagesAmount" type="text" class="form-control" placeholder="Cantidad de Paginas" ng-model="pagesAmount" required>
       <input type="submit" id="submit" class="btn btn-primary" value="Submit" />
     </form>

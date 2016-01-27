@@ -1,6 +1,6 @@
 <div id="books" class="table-responsive">
   <span id="books-counter">Cantidad de libros: {{books.length}}</span>
-  <table class="table table-striped">
+  <table class="table table-hover">
     <thead>
       <tr>
         <td id="default-row">Book Title</td>
@@ -13,12 +13,12 @@
     </thead>
     <tbody id="books-table">
       <tr ng-repeat="book in books | filter:queryBook">
-        <td id="default-row">{{book.title}}</td>
-        <td id="default-row" ng-model="authorName">{{book.author}}</td>
-        <td id="default-row">{{book.description}}</td>
-        <td id="default-row"class="text-center">{{book.pagesAmount}}</td>
-        <td id="default-row" style="width:5%"><a href="#/bookDetail/{{book.id}}">Editar</a></td>
-        <td id="default-row" style="width:5%"><a>Quitar</a></td>
+        <td>{{book.title}}</td>
+        <td ng-model="authorName">{{book.author}}</td>
+        <td>{{book.description}}</td>
+        <td class="text-center">{{book.pagesAmount}}</td>
+        <td style="width:5%"><a href="#/bookDetail/{{book.id}}">Editar</a></td>
+        <td style="width:5%"><a ng-click="deleteBook(book.id)">Quitar</a></td>
       </tr>
     </tbody>
   </table>
