@@ -2,16 +2,15 @@
   <h1>Formulario Alta Libro</h1>
   <div id="crearLibro">
     <form id="form-book" ng-submit="submit()">
-      <input id="idBook" type="hidden" ng-model="id">
-      <input id="title" name="title" type="text" class="form-control" placeholder="Titulo" ng-model="title" required>
-      <div id="author">
-        <input id="author" class="form-control" type="text" placeholder="Authors" ng-model="author" required>
+      <input id="idBook" type="hidden" ng-model="book.id">
+      <input id="title" name="title" type="text" class="form-control" placeholder="Titulo" ng-model="book.title" required>
+
+      <div ng-controller="AuthorsListCtrl">
+        <select id="authorSelect" class="form-control" ng-options="author.name for author in authors" ng-model="book.author">
+        </select>
       </div>
-      <select class="form-control" ng-model="authorSelected" ng-controller="AuthorsListCtrl">
-        <option ng-repeat="author in authors" value="{{author.id}}">{{author.name}}</option>
-      </select>
-      <textarea class="form-control" ng-model="description" rows="3" placeholder="Descripcion del libro"></textarea>
-      <input id="pagesAmount" name="pagesAmount" type="text" class="form-control" placeholder="Cantidad de Paginas" ng-model="pagesAmount" required>
+      <textarea class="form-control" ng-model="book.description" rows="3" placeholder="Descripcion del libro"></textarea>
+      <input id="pagesAmount" name="pagesAmount" type="text" class="form-control" placeholder="Cantidad de Paginas" ng-model="book.pagesAmount" required>
       <input type="submit" id="submit" class="btn btn-primary" value="Submit" />
     </form>
   </div>

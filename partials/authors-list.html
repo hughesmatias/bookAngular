@@ -9,11 +9,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="author in authors">
+      <tr ng-repeat="author in authors" id="tr-author-{{author.id}}">
         <td>{{author.name}}</td>
         <td><a href="#/authors/{{author.id}}">Editar</a></td>
         <td><a href="" ng-click="deleteAuthor(author.id)">Quitar</a></td>
-      </tbody>
+      </tr>
+    </tbody>
   </table>
   <spam id="error-author"></spam>
   <a class="btn btn-default" id="link-create-author" role="button" href="#/authors/new">Create Author</a>

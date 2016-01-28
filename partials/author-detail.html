@@ -2,8 +2,8 @@
   <h1>Formulario Alta Autor</h1>
   <div id="crearAutor">
     <form id="form-author" ng-submit="submit()">
-      <input id="idAuthor" type="hidden" ng-model="idAuthor">
-      <input id="nameAuthor" name="nameAuthor" ng-model="nameAuthor" type="text" class="form-control" placeholder="Nombre" required>
+      <input id="idAuthor" type="hidden" ng-model="author.id">
+      <input id="nameAuthor" name="nameAuthor" ng-model="author.name" type="text" class="form-control" placeholder="Nombre" required>
       <input type="submit" id="submit" class="btn btn-primary" value="Submit" />
     </form>
   </div>

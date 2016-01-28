@@ -13,39 +13,38 @@ function ($scope, $http){
     $scope.books = data;
     $scope.deleteBook = function(id){
       $http.delete("http://localhost:8000/books/"+ id).success(function(data){
-        window.location = "#/books/list";
+        $("#tr-book-"+id).remove();
       });
-    }
+    };
   });
 }]);
 
 BooksAppController.controller("BookDetailCtrl",["$scope","$http","$routeParams",
 function ($scope, $http ,$routeParams){
-  $("#create-book h1").text("Formulario de Edicion");
+  $("#create-book h1").text("Formulario de Edicion Libro");
   $http.get("http://localhost:8000/books/"+ $routeParams.id ).success(function(data){
-    var book = data;
-    $scope.title = book.title;
-    $scope.author = book.author;
-    $scope.pagesAmount = book.pagesAmount;
-    $scope.description = book.description;
-    //$scope.selected = book.author
+    $scope.book = data;
+    $("#authorSelect option:selected").text($scope.book.author);
+
+    $scope.submit = function(){
+      $scope.book.author = $scope.book.author.name;
+      console.log($scope.book);
+      $http.put("http://localhost:8000/books/"+$scope.id,$scope.book).success(function(){
+        window.location = "#/books/list";
+      });
+    };
   });
 }]);
 
 BooksAppController.controller("BookCreateCtrl",["$scope","$http",
 function($scope,$http){
-  $("#create-book h1").text("Formulario de Creacion");
-
+  $("#create-book h1").text("Formulario de Creacion Libro");
   $scope.submit = function(){
-    console.log($scope.authorSelected);
-    var book = {
-      "title": $scope.title,
-      "author": $scope.author,
-      "pagesAmount": $scope.pagesAmount
-    };
-    // $http.post("http://localhost:8000/books", book).success(function (data) {
-    //   window.location = "#/books/list";
-    // });
+    var book = $scope.book;
+    book.author = $scope.book.author.name;
+    $http.post("http://localhost:8000/books", book).success(function (data) {
+      window.location = "#/books/list";
+    });
   };
 }]);
 
@@ -56,22 +55,19 @@ function($scope,$http){
   });
   $scope.deleteAuthor = function(id){
     $http.delete("http://localhost:8000/authors/"+id).success(function(data){
-      console.log("deleted author");
+      $("#tr-author-"+id).remove();
     });
   };
 }]);
 
 BooksAppController.controller("AuthorDetailCtrl",["$scope","$http","$routeParams",
 function($scope,$http,$routeParams) {
-  $("#create-author h1").text("Formulario de Edicion");
+  $("#create-author h1").text("Formulario de Edicion Autor");
   $http.get("http://localhost:8000/authors/"+$routeParams.id).success(function(data) {
-    var author = data;
-    $scope.idAuthor=author.id;
-    $scope.nameAuthor=author.name;
+    $scope.author = data;
   });
   $scope.submit = function(){
-    var author = {"id": $scope.idAuthor , "name" : $scope.nameAuthor};
-    $http.put("http://localhost:8000/authors/"+$scope.idAuthor,author).success(function(){
+    $http.put("http://localhost:8000/authors/"+$scope.author.id,$scope.author).success(function(){
       window.location = "#/authors/list";
     });
   };
@@ -79,9 +75,9 @@ function($scope,$http,$routeParams) {
 
 BooksAppController.controller("AuthorCreateCtrl",["$scope","$http",
 function ($scope,$http){
-  $("#create-author h1").text("Formulario de Creacion");
+  $("#create-author h1").text("Formulario de Creacion Autor");
   $scope.submit = function(){
-    var author = {"name" : $scope.nameAuthor};
+    var author = {"name" : $scope.author.name};
     $http.post("http://localhost:8000/authors",author).success(function(data){
       window.location = "#/authors/list";
     });
