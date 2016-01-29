@@ -6,7 +6,7 @@ function ($scope, $http ,$routeParams,booksGet){
   // $http.get("http://localhost:8000/books/"+ $routeParams.id ).success(function(data){
     // $scope.book = data;
   $scope.book = booksGet.query($routeParams.id);
-  
+
   $("#authorSelect option:selected").text($scope.book.author);
 
   $scope.submit = function(){
