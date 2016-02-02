@@ -7,13 +7,6 @@ function ($resource){
   });
 }]);
 
-BookAppServices.factory("authorsGet", ["$resource",
-function ($resource){
-  return $resource("http://localhost:8000/authors/:id",{
-    query: {method: "GET", params:{id:'@id'}, isArray: true ,cancellable: true}
-  });
-}]);
-
 BookAppServices.factory("booksGetAll", ["$resource",
 function ($resource){
   return $resource("http://localhost:8000/books/", {},{
@@ -21,9 +14,16 @@ function ($resource){
   });
 }]);
 
+BookAppServices.factory("authorsGet", ["$resource",
+function ($resource){
+  return $resource("http://localhost:8000/authors/:id",{
+    query: {method: "GET", params:{id:'@id'}, isArray: true ,cancellable: true}
+  });
+}]);
+
 BookAppServices.factory("booksGet", ["$resource",
 function($resource){
-  return $resource("http://localhost:8000/books/:id",{id: "@id"},{
-    query : {method : "GET", isArray: true , cancellable: true}
-  })
+  return $resource("http://localhost:8000/books/:id",{id: '@id'},
+    {'query':  {method:'GET', isArray:false} }
+  );
 }]);
